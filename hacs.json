@@ -1,0 +1,7 @@
+{
+  "name": "Unraid Docker Control",
+  "homeassistant": "2024.6.0",
+  "content_in_root": false,
+  "render_readme": true,
+  "filename": "custom_components/unraid_docker/manifest.json"
+}

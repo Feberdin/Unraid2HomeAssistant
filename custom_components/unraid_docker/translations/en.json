@@ -1,0 +1,36 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "Connect Unraid Docker",
+        "description": "Provide SSH credentials for your Unraid server.",
+        "data": {
+          "host": "Host",
+          "port": "SSH port",
+          "username": "Username",
+          "password": "Password",
+          "known_hosts": "Known hosts (optional)",
+          "scan_interval": "Polling interval (seconds)"
+        }
+      }
+    },
+    "error": {
+      "cannot_connect": "Failed to connect",
+      "invalid_auth": "Authentication failed",
+      "unknown": "Unknown error"
+    },
+    "abort": {
+      "already_configured": "This host is already configured"
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "Unraid Docker options",
+        "data": {
+          "scan_interval": "Polling interval (seconds)"
+        }
+      }
+    }
+  }
+}

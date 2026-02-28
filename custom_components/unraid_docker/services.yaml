@@ -1,0 +1,50 @@
+start_container:
+  name: Start Docker container
+  description: Startet einen Docker-Container auf dem konfigurierten Unraid-Host.
+  fields:
+    container:
+      name: Container
+      description: Name oder ID des Containers.
+      required: true
+      selector:
+        text:
+    entry_id:
+      name: Config Entry ID
+      description: Optionale Config Entry ID bei mehreren Unraid Hosts.
+      required: false
+      selector:
+        text:
+
+stop_container:
+  name: Stop Docker container
+  description: Stoppt einen Docker-Container auf dem konfigurierten Unraid-Host.
+  fields:
+    container:
+      name: Container
+      description: Name oder ID des Containers.
+      required: true
+      selector:
+        text:
+    entry_id:
+      name: Config Entry ID
+      description: Optionale Config Entry ID bei mehreren Unraid Hosts.
+      required: false
+      selector:
+        text:
+
+restart_container:
+  name: Restart Docker container
+  description: Startet einen Docker-Container auf dem konfigurierten Unraid-Host neu.
+  fields:
+    container:
+      name: Container
+      description: Name oder ID des Containers.
+      required: true
+      selector:
+        text:
+    entry_id:
+      name: Config Entry ID
+      description: Optionale Config Entry ID bei mehreren Unraid Hosts.
+      required: false
+      selector:
+        text:
