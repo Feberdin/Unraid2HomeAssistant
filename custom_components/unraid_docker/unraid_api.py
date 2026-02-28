@@ -78,6 +78,10 @@ class UnraidApiClient:
                 conn.run(command, check=False),
                 timeout=self._config.command_timeout,
             )
+        except asyncssh.Error as err:
+            raise UnraidCommandError(
+                f"SSH Kommando konnte nicht ausgefuehrt werden: {command}"
+            ) from err
         except TimeoutError as err:
             raise UnraidCommandError(f"Timeout bei Kommando: {command}") from err
         finally:

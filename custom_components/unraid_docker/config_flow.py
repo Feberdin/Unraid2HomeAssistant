@@ -53,8 +53,12 @@ class UnraidDockerConfigFlow(config_entries.ConfigFlow, domain=DOMAIN):
                 _LOGGER.error("Verbindungstest fehlgeschlagen: %s", err)
                 errors["base"] = "cannot_connect"
             except Exception:  # pragma: no cover - Schutz fuer unerwartete Fehler
-                _LOGGER.exception("Unerwarteter Fehler im Config Flow")
-                errors["base"] = "unknown"
+                _LOGGER.exception(
+                    "Unerwarteter Fehler im Config Flow fuer Host=%s Benutzer=%s",
+                    user_input.get(CONF_HOST),
+                    user_input.get(CONF_USERNAME),
+                )
+                errors["base"] = "cannot_connect"
             else:
                 data = {
                     CONF_HOST: user_input[CONF_HOST],
