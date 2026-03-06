@@ -2,6 +2,7 @@
 
 [![Home Assistant](https://img.shields.io/badge/Home%20Assistant-Custom%20Integration-41BDF5?logo=homeassistant&logoColor=white)](https://www.home-assistant.io/)
 [![HACS](https://img.shields.io/badge/HACS-Custom-orange)](https://hacs.xyz/)
+[![Version](https://img.shields.io/badge/Version-1.0.0-blue.svg)](https://github.com/Feberdin/Unraid2HomeAssistant/releases/tag/1.0.0)
 [![License](https://img.shields.io/badge/License-MIT-green.svg)](./LICENSE)
 
 Steuere und ueberwache Docker-Container auf deinem Unraid-Server direkt in Home Assistant.
