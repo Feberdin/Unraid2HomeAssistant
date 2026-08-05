@@ -50,11 +50,16 @@ async def async_setup_entry(hass: HomeAssistant, entry: ConfigEntry) -> bool:
     """Setzt eine ConfigEntry Instanz auf."""
     hass.data.setdefault(DOMAIN, {})
 
+    host = entry.data[CONF_HOST]
+    port = entry.data[CONF_PORT]
+    username = entry.data[CONF_USERNAME]
+    secret = str(entry.data[CONF_PASSWORD])
+
     config = UnraidConnectionConfig(
-        host=entry.data[CONF_HOST],
-        port=entry.data[CONF_PORT],
-        username=entry.data[CONF_USERNAME],
-        password=entry.data[CONF_PASSWORD],
+        host=host,
+        port=port,
+        username=username,
+        password=secret,
         known_hosts=entry.data.get(CONF_KNOWN_HOSTS),
     )
 

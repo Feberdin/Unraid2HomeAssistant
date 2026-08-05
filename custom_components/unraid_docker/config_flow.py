@@ -33,14 +33,19 @@ class UnraidDockerConfigFlow(config_entries.ConfigFlow, domain=DOMAIN):
         errors: dict[str, str] = {}
 
         if user_input is not None:
-            await self.async_set_unique_id(f"{user_input[CONF_USERNAME]}@{user_input[CONF_HOST]}")
+            host = user_input[CONF_HOST]
+            username = user_input[CONF_USERNAME]
+            secret = str(user_input[CONF_PASSWORD])
+            port = int(user_input[CONF_PORT])
+
+            await self.async_set_unique_id(f"{username}@{host}")
             self._abort_if_unique_id_configured()
 
             connection_config = UnraidConnectionConfig(
-                host=user_input[CONF_HOST],
-                port=user_input[CONF_PORT],
-                username=user_input[CONF_USERNAME],
-                password=user_input[CONF_PASSWORD],
+                host=host,
+                port=port,
+                username=username,
+                password=secret,
                 known_hosts=user_input.get(CONF_KNOWN_HOSTS),
             )
             api = UnraidApiClient(connection_config)
@@ -55,23 +60,23 @@ class UnraidDockerConfigFlow(config_entries.ConfigFlow, domain=DOMAIN):
             except Exception:  # pragma: no cover - Schutz fuer unerwartete Fehler
                 _LOGGER.exception(
                     "Unerwarteter Fehler im Config Flow fuer Host=%s Benutzer=%s",
-                    user_input.get(CONF_HOST),
-                    user_input.get(CONF_USERNAME),
+                    host,
+                    username,
                 )
                 errors["base"] = "cannot_connect"
             else:
                 data = {
-                    CONF_HOST: user_input[CONF_HOST],
-                    CONF_PORT: user_input[CONF_PORT],
-                    CONF_USERNAME: user_input[CONF_USERNAME],
-                    CONF_PASSWORD: user_input[CONF_PASSWORD],
+                    CONF_HOST: host,
+                    CONF_PORT: port,
+                    CONF_USERNAME: username,
+                    CONF_PASSWORD: secret,
                     CONF_KNOWN_HOSTS: user_input.get(CONF_KNOWN_HOSTS, ""),
                 }
                 options = {
                     CONF_SCAN_INTERVAL: user_input[CONF_SCAN_INTERVAL],
                 }
                 return self.async_create_entry(
-                    title=f"{user_input[CONF_HOST]}",
+                    title=f"{host}",
                     data=data,
                     options=options,
                 )
