@@ -143,3 +143,12 @@ custom_components/unraid_docker/
 ## Lizenz
 
 Dieses Projekt steht unter der MIT-Lizenz. Siehe [LICENSE](./LICENSE).
+
+
+## Sicherheit
+
+SSH-Zugangsdaten ausschließlich in der geschützten Home-Assistant-
+Konfiguration speichern. Einen eigenen, minimal berechtigten Unraid-Benutzer
+verwenden, Host-Schlüssel prüfen und keine Tokens, Schlüssel oder vollständigen
+Debuglogs in Issues veröffentlichen. Sicherheitsmeldungen folgen
+[SECURITY.md](SECURITY.md).
